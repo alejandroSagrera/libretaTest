@@ -22,7 +22,7 @@ public class LibretaTests extends FunctionalTests {
 		String mouseHoverCi = logPage.hover(driver);
 		assertTrue(mouseHoverCi.contains("Ingrese documento sin punto ni guiónes"));
 		
-		logPage.enterCredentials("40246159", "Ale_1988");
+		logPage.enterCredentials("yyyyyyy", "xxxxxxx");
 		ReceiptPage pantallaInicio = logPage.submit();
 		assertTrue(pantallaInicio.isInitialized());
 	}
