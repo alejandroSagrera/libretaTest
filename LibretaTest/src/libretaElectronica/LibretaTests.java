@@ -15,6 +15,8 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
@@ -41,11 +43,10 @@ public class LibretaTests extends FunctionalTests {
 		assertTrue(pantallaInicio.isInitialized());
 	}
 
-	@Test
-	public void TestB() {
-		menu.alumnnosInicio();
-		assertTrue(menu.viendoMenuAlumnos());
-	}
+	/*
+	 * @Test public void TestB() { menu.alumnnosInicio();
+	 * assertTrue(menu.viendoMenuAlumnos()); }
+	 */
 
 	@Test
 	public void TestC() {
@@ -58,8 +59,18 @@ public class LibretaTests extends FunctionalTests {
 		assertTrue(logPage.isInitialized());
 	}
 
-	public static void ExplicitWait(WebDriver driver, String text) {
-		(new WebDriverWait(driver, 10)).until(ExpectedConditions.elementToBeClickable(By.linkText(text)));
+	public static void hoverAndClick(WebDriver driver, WebElement elem1, WebElement elem2) {
+		Actions acciones = new Actions(driver);
+		acciones.moveToElement(elem1).click(elem2).build().perform();
+	}
+
+	public static void dragAndDrop(WebDriver driver, WebElement elemSource, WebElement elemDestination) {
+		Actions acciones = new Actions(driver);
+		acciones.dragAndDrop(elemSource, elemDestination).perform();
+	}
+
+	public static void ExplicitWait(WebDriver driver, int time, String text) {
+		(new WebDriverWait(driver, time)).until(ExpectedConditions.elementToBeClickable(By.linkText(text)));
 	}
 
 	public static void ImplicitWait(WebDriver driver) {

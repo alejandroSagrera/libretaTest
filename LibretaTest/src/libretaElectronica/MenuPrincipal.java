@@ -2,6 +2,9 @@ package libretaElectronica;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
+
 import pageObject.PageObject;
 
 public class MenuPrincipal extends PageObject {
@@ -24,11 +27,14 @@ public class MenuPrincipal extends PageObject {
 	    return new ReceiptPage(driver);
 	}
 	public boolean misDatos() {
-		return cambiarContrasenia.verForm();
-		/*
-	    driver.findElement(By.linkText("Mis Datos")).click();
-		String cambiarContra = driver.findElement(By.linkText("Cambiar Contraseña")).getText();
-		return (!cambiarContra.isEmpty())?true:false;*/
+		WebElement elemento= driver.findElement(By.xpath("/html/body/div[1]/div/div[2]/ul/li[1]/a"));
+		if(elemento!=null) {
+			Actions acciones = new Actions(driver);
+			acciones.moveToElement(elemento).click().perform();
+			return cambiarContrasenia.verForm();
+		}else {
+			return false;
+		}
 	}
 	public boolean verCambiarContrasenia() {
 		cambiarContrasenia.verForm();

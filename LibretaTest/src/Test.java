@@ -57,7 +57,6 @@ public class Test {
 	public static void dragAndDrop(WebDriver driver, WebElement elemSource, WebElement elemDestination) {
 		Actions acciones = new Actions(driver);
 		acciones.dragAndDrop(elemSource, elemDestination).perform();
-		
 	}
 	
 	public static boolean exist(WebElement exi) {
