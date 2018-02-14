@@ -7,7 +7,7 @@ import org.openqa.selenium.support.FindBy;
 
 import pageObject.PageObject;
 
-public class AlumnosInicio extends PageObject{
+public class Alumno extends PageObject{
 
 	@FindBy(tagName = "h4")
 	private WebElement header;
@@ -15,15 +15,15 @@ public class AlumnosInicio extends PageObject{
 	@FindBy(tagName = "a")
 	private WebElement link;
 	
-	public AlumnosInicio(WebDriver driver) {
+	public Alumno(WebDriver driver) {
 		super(driver);
 	}
-	public  AlumnosInicio alumnosInicio() {
+	public  void alumnosInicio() {
 		driver.findElement(By.linkText("Alumnos")).click();
-		return this;
 	}
 	public boolean viendoMenuAlumnos() {
-		return link.getText().contains("Alumno Inicio");
+		String menuAlum = driver.findElement(By.linkText("Alumno Inicio")).getText();
+		return (!menuAlum.isEmpty())?true:false;
 	}
 	public boolean estoyEnAlumnos() {
 		return header.getText().contains("Lista de Alumnos");
